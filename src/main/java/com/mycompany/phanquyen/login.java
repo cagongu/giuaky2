@@ -8,7 +8,6 @@ import com.mycompany.entities.NhanVien;
 import com.mycompany.phanquyen.Connect.JBDCConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,7 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
     }
-
+                                
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,18 +57,8 @@ public class login extends javax.swing.JFrame {
         title.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         ID_login.setName("ID_login"); // NOI18N
-        ID_login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ID_loginActionPerformed(evt);
-            }
-        });
 
         password.setName("password_login"); // NOI18N
-        password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
-            }
-        });
 
         btn_login.setText("ĐĂNG NHẬP");
         btn_login.setToolTipText("");
@@ -141,10 +130,6 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
-
     private void getNhanVienFromDB() {
         danhSachNhanVien = new ArrayList<>();
         try {
@@ -156,7 +141,6 @@ public class login extends javax.swing.JFrame {
 
             while (rs.next()) {
                 NhanVien a = new NhanVien(rs.getString("MANHANVIEN"), rs.getString("TENNHANVIEN"), rs.getString("DIACHI"), rs.getString("SDT"), rs.getString("GIOITINH"), rs.getString("NGAYSINH"), rs.getString("CMND_CCCD"), rs.getString("TENDANGNHAP"), rs.getString("MATKHAU"), rs.getString("VOHIEUHOA"), rs.getString("LAQUANLY"));
-                System.out.println(a);
                 danhSachNhanVien.add(a);
             }
 
@@ -164,20 +148,38 @@ public class login extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         try {
             getNhanVienFromDB();
-            ID_login.setText(danhSachNhanVien.get(1).getTENDANGNHAP());
+            int index = -1;
+            for (int i = 0; i < danhSachNhanVien.size(); i++) {
+                if(danhSachNhanVien.get(i).getTENDANGNHAP().equals(ID_login.getText())){
+                    index = i;
+                    break;
+                }
+            }
+            if(index != -1){
+                if(danhSachNhanVien.get(index).getMATKHAU().equals(password.getText())){
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công ", "success",
+                    JOptionPane.INFORMATION_MESSAGE);
+                    ListMatHang a = new ListMatHang();
+                    a.setTitle(ID_login.getText());
+                    a.show();
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "ID hoặc Password bạn vừa nhập không chính xác ", "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        login a = new login(); a.repaint();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
-
-    private void ID_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID_loginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ID_loginActionPerformed
 
     /**
      * @param args the command line arguments

@@ -39,10 +39,10 @@ public class test {
 //            String query3 = "DROP TABLE employess";
 //            stmt.execute(query3);
 //            System.out.println("Employess table removed");
-            String SQL = "SELECT TOP 3 * FROM customers";
+            String SQL = "SELECT TOP 3 * FROM LOAIMATHANG";
             ResultSet rs = stmt.executeQuery(SQL);
             while ((rs.next())) {
-                System.out.println(rs.getString("ID") + " " + rs.getString("name") + " " + rs.getString("address") + " " + rs.getString("productID"));
+                System.out.println(rs.getString("MALOAI") + " " + rs.getString("TENLOAI") + " " + rs.getString("VOHIEUHOA"));
             }
 
         } catch (SQLException e) {
