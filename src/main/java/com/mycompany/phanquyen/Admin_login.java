@@ -97,13 +97,10 @@ public class Admin_login extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         } else {
 //            code thêm đoạn đổi mã nhan viên và addmin;
-            String newUser = user.getTENDANGNHAP();
-            newUser = "ad" + newUser.substring(2);
-            user.setTENDANGNHAP(newUser);
-            nhanVienService.updateNhanVien(user);
-            JOptionPane.showMessageDialog(this, "Thành Công! ", "successful",
+            JOptionPane.showMessageDialog(this, "Login Thành Công! ", "successful",
                     JOptionPane.INFORMATION_MESSAGE);
             PhanQuyenUser a = new PhanQuyenUser();
+            this.setVisible(false);
             a.show();
 
         }

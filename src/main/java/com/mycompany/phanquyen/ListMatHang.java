@@ -273,6 +273,7 @@ public class ListMatHang extends javax.swing.JFrame {
     private void UserFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserFormMouseClicked
         PhanQuyenUser a = new PhanQuyenUser();
         a.setTitle(this.getTitle());
+        this.setVisible(false);
         a.show();
     }//GEN-LAST:event_UserFormMouseClicked
 

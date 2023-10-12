@@ -116,10 +116,37 @@ public class NhanVienService {
         }
     }
 
-    public void updateNhanVien(NhanVien nhanVien) {
-        String id = nhanVien.getMANHANVIEN();
-        deleteNhanVien(id);
-        addNhanVien(nhanVien);
+    public void updateNhanVien(NhanVien nhanVien, String id) {
+        try (Connection conn = JBDCConnection.getConnection()) {
+            try {
+                String query = "UPDATE NHANVIEN SET MANHANVIEN=?, TENNHANVIEN=?, DIACHI=?, SDT=?, GIOITINH=?, NGAYSINH=?, CMND_CCCD=?, TENDANGNHAP=?, MATKHAU=?, VOHIEUHOA=?, LAQUANLY=? WHERE MANHANVIEN=?";
+                try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+                    preparedStatement.setString(1, nhanVien.getMANHANVIEN());
+                    preparedStatement.setNString(2, nhanVien.getTENNHANVIEN());
+                    preparedStatement.setNString(3, nhanVien.getDIACHI());
+                    preparedStatement.setString(4, nhanVien.getSDT());
+                    preparedStatement.setString(5, nhanVien.getGIOITINH());
+                    preparedStatement.setString(6, nhanVien.getNGAYSINH());
+                    preparedStatement.setString(7, nhanVien.getCMND_CCCD());
+                    preparedStatement.setString(8, nhanVien.getTENDANGNHAP());
+                    preparedStatement.setString(9, nhanVien.getMATKHAU());
+                    preparedStatement.setString(10, nhanVien.getVOHIEUHOA());
+                    preparedStatement.setString(11, nhanVien.getLAQUANLY());
+                    preparedStatement.setString(12, id);
+                    preparedStatement.executeUpdate();
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Update thất bại: " + e.getMessage(), "failed",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Update thất bại: " + e.getMessage(), "failed",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối: " + e.getMessage(), "failed",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public void deleteNhanVien(String Id) {

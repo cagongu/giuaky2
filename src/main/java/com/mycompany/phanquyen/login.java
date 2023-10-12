@@ -166,6 +166,7 @@ public class login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Đăng nhập thành công ", "success",
                     JOptionPane.INFORMATION_MESSAGE);
                     ListMatHang a = new ListMatHang();
+                    this.setVisible(false);
                     a.setTitle(ID_login.getText());
                     a.show();
                 }
