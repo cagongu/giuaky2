@@ -50,7 +50,7 @@ public class login extends javax.swing.JFrame {
         setName("login"); // NOI18N
 
         title.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
-        title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         title.setForeground(new java.awt.Color(255, 51, 51));
         title.setText("VĂN PHÒNG PHẨM SAO MAI");
         title.setName("lbTitle"); // NOI18N
@@ -60,6 +60,7 @@ public class login extends javax.swing.JFrame {
 
         password.setName("password_login"); // NOI18N
 
+        btn_login.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         btn_login.setText("ĐĂNG NHẬP");
         btn_login.setToolTipText("");
         btn_login.setName("btn_login"); // NOI18N
@@ -108,7 +109,7 @@ public class login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(256, Short.MAX_VALUE)
+                .addContainerGap(212, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(title)

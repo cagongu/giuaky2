@@ -64,13 +64,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="jLabel_mamathang" alignment="2" min="-2" pref="77" max="-2" attributes="0"/>
-                      <Component id="jLabel_price" alignment="2" min="-2" pref="77" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel_loaimathang" min="-2" pref="85" max="-2" attributes="0"/>
+                  <Component id="jLabel_mamathang" min="-2" pref="99" max="-2" attributes="0"/>
+                  <Component id="jLabel_loaimathang" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="jLabel_price" min="-2" pref="77" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
@@ -127,9 +125,9 @@
                           <Component id="cmb_dvt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel_price" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_price" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_price" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_price" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane_description" min="-2" pref="111" max="-2" attributes="0"/>
