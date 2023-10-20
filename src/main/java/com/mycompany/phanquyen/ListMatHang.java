@@ -238,7 +238,7 @@ public class ListMatHang extends javax.swing.JFrame {
         product.setMALOAI(cmb_loaiMatHang.getSelectedItem().toString());
         product.setMOTA(jTextArea_desciption.getText());
         product.setVOHIEUHOA("false");
-        productService.updateProduct(product, product.getMAMH());
+        productService.addProduct(product);
         FillMatHang();
     }//GEN-LAST:event_addSelectionMouseClicked
 
