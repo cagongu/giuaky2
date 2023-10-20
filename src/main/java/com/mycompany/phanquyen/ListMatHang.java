@@ -29,7 +29,7 @@ public class ListMatHang extends javax.swing.JFrame {
     public void setCurrentId(String currentId) {
         this.currentId = currentId;
     }
-    
+
     private ProductService productService;
 
     public ListMatHang() {
@@ -226,7 +226,7 @@ public class ListMatHang extends javax.swing.JFrame {
         txt_price.setText(TableProduct.getValueAt(row, 4).toString());
         cmb_dvt.setSelectedItem(TableProduct.getValueAt(row, 5));
         jTextArea_desciption.setText(TableProduct.getValueAt(row, 6).toString());
-        currentId = TableProduct.getValueAt(row, 2).toString();
+        setCurrentId(TableProduct.getValueAt(row, 2).toString());
     }//GEN-LAST:event_TableProductMouseClicked
 
     private void addSelectionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSelectionMouseClicked
@@ -238,9 +238,29 @@ public class ListMatHang extends javax.swing.JFrame {
         product.setMALOAI(cmb_loaiMatHang.getSelectedItem().toString());
         product.setMOTA(jTextArea_desciption.getText());
         product.setVOHIEUHOA("false");
-        productService.addProduct(product);
+        productService.updateProduct(product, product.getMAMH());
         FillMatHang();
     }//GEN-LAST:event_addSelectionMouseClicked
+
+//    private boolean checkValue(MatHang matHang) {
+//        boolean flag = false;
+//        if (matHang.getMAMH() == null) {
+//            JOptionPane.showMessageDialog(null, "Mã mặt hàng null", "error",
+//                    JOptionPane.ERROR_MESSAGE);
+//            flag = true;
+//        }
+//        if (matHang.getTENMH() == null) {
+//            JOptionPane.showMessageDialog(null, "Tên mặt hàng null", "error",
+//                    JOptionPane.ERROR_MESSAGE);
+//            flag = true;
+//        }
+//        if (matHang.getGIABAN() <= 0) {
+//            JOptionPane.showMessageDialog(null, "giá bán mặt hàng nhỏ hơn bằng 0", "error",
+//                    JOptionPane.ERROR_MESSAGE);
+//            flag = true;
+//        }
+//        return flag;
+//    }
 
     private void editSelectionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editSelectionMouseClicked
         try {

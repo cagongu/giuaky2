@@ -56,6 +56,11 @@ public class PhanQuyenUser extends javax.swing.JFrame {
                 "Tên Đăng Nhập", "Tên Nhân Viên", "Số Điện Thoại", "Giới Tính", "Ngày Sinh"
             }
         ));
+        TABLE_ADMIN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TABLE_ADMINMouseClicked(evt);
+            }
+        });
         ScrollPane_admin.setViewportView(TABLE_ADMIN);
         if (TABLE_ADMIN.getColumnModel().getColumnCount() > 0) {
             TABLE_ADMIN.getColumnModel().getColumn(3).setMaxWidth(100);
@@ -146,6 +151,46 @@ public class PhanQuyenUser extends javax.swing.JFrame {
                         JOptionPane.ERROR_MESSAGE);
             }
         }    }//GEN-LAST:event_TABLE_NHANVIENMouseClicked
+
+    private void TABLE_ADMINMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TABLE_ADMINMouseClicked
+        int row = TABLE_ADMIN.getSelectedRow();
+
+        if (row > 0) {
+            int result = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn tiếp tục?", "Xác nhận",
+                    JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION) {
+                // Thực hiện các hành động khi người dùng chọn Yes ở đây
+                nhanVienService = new NhanVienService();
+                List<NhanVien> listNV = nhanVienService.getAll();
+                NhanVien nhanVien = new NhanVien();
+                String id = "";
+
+                for (var item : listNV) {
+                    if (item.getTENDANGNHAP().equals(TABLE_ADMIN.getValueAt(row, 0))) {
+                        id = item.getMANHANVIEN();
+                        nhanVien.setMANHANVIEN(item.getMANHANVIEN());
+                        nhanVien.setTENNHANVIEN(item.getTENNHANVIEN());
+                        nhanVien.setDIACHI(item.getDIACHI());
+                        nhanVien.setSDT(item.getSDT());
+                        nhanVien.setGIOITINH(item.getGIOITINH());
+                        nhanVien.setNGAYSINH(item.getNGAYSINH());
+                        nhanVien.setCMND_CCCD(item.getCMND_CCCD());
+                        nhanVien.setTENDANGNHAP(item.getTENDANGNHAP());
+                        nhanVien.setMATKHAU(item.getMATKHAU());
+                        nhanVien.setVOHIEUHOA(item.getVOHIEUHOA());
+                        nhanVien.setLAQUANLY("false");
+                    }
+                }
+                nhanVienService.updateNhanVien(nhanVien, id);
+                Admin_login a = new Admin_login();
+                a.setTitle(this.getTitle());
+                a.show();
+            } else {
+                JOptionPane.showMessageDialog(null, "Bạn không có quyền admin?", "error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_TABLE_ADMINMouseClicked
 
     /**
      * @param args the command line arguments

@@ -101,8 +101,8 @@ public class Admin_login extends javax.swing.JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
             PhanQuyenUser a = new PhanQuyenUser();
             this.setVisible(false);
+            a.setTitle(this.getTitle());
             a.show();
-
         }
     }//GEN-LAST:event_btn_acceptActionPerformed
 
